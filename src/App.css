@@ -40,3 +40,45 @@
 .read-the-docs {
   color: #888;
 }
+
+/* i added */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.victory-message {
+  text-align: center;
+  font-size: 1.25rem;
+  color: green;
+  margin-top: 1rem;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: hotpink;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 16px;
+  border: 5px dashed black;
+  z-index: 9999;
+}
+
+button:hover {
+  background-color: #444;
+}
+
