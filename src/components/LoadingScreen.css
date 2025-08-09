@@ -1,0 +1,22 @@
+.loading-screen {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #D4CBC2;
+  gap: 20px;
+}
+
+.loading {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #FF3300;
+}
+
+.letter-box {
+  font-size: 4rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #FF3300;
+}

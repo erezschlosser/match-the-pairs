@@ -1,0 +1,27 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 1fr;     /* each row gets equal height */
+  gap: 10px;
+  flex: 1 1 auto;          /* fill the parent */
+  min-height: 0;
+  position: relative;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.controls {
+  position: absolute;
+  inset: 0px 20px auto auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+@media (max-width: 600px) {
+  .controls {
+    inset: 0px 20px auto auto;
+  }
+}

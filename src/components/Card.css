@@ -1,38 +1,67 @@
 .card {
-    width: 100px;
-    height: 100px;
-    perspective: 1000px;
-    cursor: pointer;
-  }
-  
-  .card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-  }
-  
-  .card.flipped .card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .card-front,
-  .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: white;
-  }
-  
-  .card-back {
-    transform: rotateY(180deg);
-  }
-  
+  position: relative;
+  width: 100%;
+  /*aspect-ratio: 1 / 1;*/
+  height: 100%;
+  perspective: 1000px;
+  /*cursor: pointer;*/
+  cursor: none;
+}
+
+.card-inner {
+  position: relative;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .6s;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  display: grid;
+  place-items: center;
+  background: #fff;
+}
+
+.face {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.card-back.hiragana .primary { font-family: 'Noto Sans JP', sans-serif; }
+.card-back.romaji   .primary { font-family: 'Mona Sans', sans-serif; }
+
+.primary {
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 1;
+  color: #111;
+}
+
+.secondary {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.card-front line {
+  transition: stroke 0.25s ease;
+}
+
+.card:hover .card-front line {
+  stroke: #FF3300;
+}

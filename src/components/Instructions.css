@@ -1,0 +1,40 @@
+.instructions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .instructions-btn {
+    all: unset;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: .04em;
+  }
+  
+  .instructions-btn:hover { background: #2a2a2a; }
+  
+  .instructions-panel {
+    overflow: hidden;   /* enables height animation */
+    height: 0;          /* collapsed by default */
+    opacity: 0;
+    display: none;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #111;
+    max-width: 520px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
+  }
+  
+  .instructions-content {
+    padding: 12px 14px;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  
+  .instr-word { display: inline-block; } /* allows per-word animation */
+

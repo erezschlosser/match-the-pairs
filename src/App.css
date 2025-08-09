@@ -1,84 +1,199 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body { cursor: none; }
+
+.cursor-wrap {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0; height: 0;
+  pointer-events: none;
+  z-index: 99999;
+
+  /* enable 3D */
+  perspective: 800px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Stacked circles */
+.cursor-circle {
+  position: absolute;
+  transform-style: preserve-3d;
+  left: -12px;  /* offset so center aligns with pointer */
+  top: -12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Bottom: dark gray */
+.cursor-bottom {
+  background: #2b2b2b;          /* dark gray */
+  /*filter: drop-shadow(0 1px 2px rgba(0,0,0,.25));*/
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-/* i added */
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  max-width: 440px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Top: orange */
+.cursor-top {
+  background: #FF3300;          /* your orange */
+  transform: translateZ(1px);   /* sit above bottom circle for 3D effect */
 }
 
 .victory-message {
   text-align: center;
-  font-size: 1.25rem;
-  color: green;
-  margin-top: 1rem;
 }
 
-.controls {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
+.para {
+  text-transform: capitalize !important;
+  font-size: 1rem;
+  color: #4d4d4d;
 }
+
 
 button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: hotpink;
-  color: black;
+  /*position: fixed;*/
+  color: #4d4d4d;
   font-weight: bold;
-  font-size: 20px;
-  padding: 16px;
-  border: 5px dashed black;
+  font-size: 1rem;
   z-index: 9999;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 button:hover {
-  background-color: #444;
+  text-decoration: underline;
 }
 
+h1 {
+  display: inline-block;
+  font-size: 100px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FF3300;
+  line-height: 1;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  flex-flow: column;
+  /*
+  justify-content: space-between;
+  align-items: stretch;
+  */
+}
+
+.topbar {
+  padding: 10px;
+  flex: 0 0 auto;
+}
+
+.titlespan {
+  color: rgb(77, 77, 77);
+}
+
+.midsection {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  flex: 1 1 auto;
+  display: flex;
+  position: relative;
+}
+
+.bottombar {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 10px;
+}
+
+.box {
+  display: flex;
+  padding: 10px;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.right {
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.spacer-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.line {
+  width: 75px;
+  height: 1px;
+  background-color: rgb(77, 77, 77);
+}
+
+.small-title {
+  display: block;
+  color: rgb(77, 77, 77);
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.digit {
+  display: inline-block;
+  color: rgb(77, 77, 77);
+  font-size: 100px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.separator {
+  flex: 1 1 0%;
+}
+
+
+
+/* Small screens: shrink text & padding, keep grid intact */
+@media (max-width: 600px) {
+  html {
+    font-size: 85%; /* scales all rem/em-based text down */
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .small-title {
+    font-size: 0.75rem;
+  }
+
+  .digit {
+    font-size: 1rem;
+  }
+
+  .line {
+    width: 20px;
+  }
+
+  .instructions-btn {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+
+  .grid {
+    gap: 6px; /* tighter spacing between cards */
+  }
+
+  .card {
+    transform: scale(0.9); /* shrink cards just a bit */
+  }
+}
+
+
+@media (hover: none) and (pointer: coarse) {
+  .cursor-wrap {
+    display: none;
+  }
+}
