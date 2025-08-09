@@ -1,4 +1,8 @@
-body { cursor: none; }
+body { 
+  cursor: none;
+  padding: 0;
+
+}
 
 .cursor-wrap {
   position: fixed;
@@ -33,17 +37,6 @@ body { cursor: none; }
   background: #FF3300;          /* your orange */
   transform: translateZ(1px);   /* sit above bottom circle for 3D effect */
 }
-
-.victory-message {
-  text-align: center;
-}
-
-.para {
-  text-transform: capitalize !important;
-  font-size: 1rem;
-  color: #4d4d4d;
-}
-
 
 button {
   /*position: fixed;*/
@@ -82,7 +75,7 @@ h1 {
 }
 
 .topbar {
-  padding: 10px;
+  padding: 0;
   flex: 0 0 auto;
 }
 
@@ -99,6 +92,7 @@ h1 {
   flex: 1 1 auto;
   display: flex;
   position: relative;
+  
 }
 
 .bottombar {
@@ -175,6 +169,10 @@ h1 {
 
   .line {
     width: 20px;
+  }
+
+  .spacer-wrapper {
+    gap: 7px;
   }
 
   .instructions-btn {

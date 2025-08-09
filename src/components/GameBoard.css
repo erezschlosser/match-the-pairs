@@ -13,7 +13,7 @@
 
 .controls {
   position: absolute;
-  inset: 0px 20px auto auto;
+  inset: 0px 10px auto auto;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
@@ -23,5 +23,22 @@
 @media (max-width: 600px) {
   .controls {
     inset: 0px 20px auto auto;
+  }
+}
+
+.victory-message {
+  color: #ff3300;
+}
+
+.para {
+  text-transform: capitalize !important;
+  font-size: 1rem;
+  color: #ff3300;
+}
+
+
+@media (max-width: 600px) {
+  .para {
+    display: none;
   }
 }

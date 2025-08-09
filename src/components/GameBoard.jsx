@@ -111,7 +111,7 @@ function GameBoard({ onStart, onWin, onRestart, resetSignal, setAttempts }) {
         <button onClick={handleRestartClick}>RESTART GAME</button>
         {isGameWon && (
           <div className="victory-message">
-            <p className="para">YOU MATCHED ALL THE PAIRS!</p>
+            <div style={{color: '#ff3300'}}>YOU MATCHED ALL THE PAIRS!</div>
           </div>
         )}
       </div>

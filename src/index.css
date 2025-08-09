@@ -28,11 +28,18 @@
   line-height: 1.5;
   color: #4d4d4d;
   background-color: #D4CBC2;
+  padding: 0;
+  margin: 0;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  padding: 0;
+  margin: 0;
 }
 
 /* Remove default anchor/button styles */
