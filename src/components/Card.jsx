@@ -14,20 +14,7 @@ function Card({ card, isFlipped, isMatched, onClick }) {
       <div className="card-inner">
         {/* FRONT (pattern) */}
         <div className="card-front">
-          <svg width="100%" height="100%" aria-hidden="true" focusable="false">
-            <defs>
-              <pattern
-                id="diagonal-stripes"
-                patternUnits="userSpaceOnUse"
-                width="10"
-                height="10"
-                patternTransform="rotate(-45)"
-              >
-                <line x1="0" y1="0" x2="0" y2="10" stroke="#4d4d4d" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#diagonal-stripes)" />
-          </svg>
+
         </div>
 
         {/* BACK (content) */}

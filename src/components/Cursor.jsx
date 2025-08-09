@@ -7,38 +7,49 @@ export default function Cursor() {
   const topRef = useRef(null);
   const bottomRef = useRef(null);
 
-  const pos = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
   const qx = useRef(null);
   const qy = useRef(null);
 
   const hoverTimer = useRef(null);
   const isOverCard = useRef(false);
-  const overBtnCount = useRef(0); // support nested / quick enter-leave
+  const overBtnCount = useRef(0);
 
   useEffect(() => {
+    // Disable on touch devices
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+
     // Smooth follow
     qx.current = gsap.quickTo(wrapRef.current, 'x', { duration: 0.2, ease: 'power3' });
     qy.current = gsap.quickTo(wrapRef.current, 'y', { duration: 0.2, ease: 'power3' });
 
     const move = (e) => {
-      pos.current.x = e.clientX;
-      pos.current.y = e.clientY;
-      qx.current(pos.current.x);
-      qy.current(pos.current.y);
+      qx.current(e.clientX);
+      qy.current(e.clientY);
     };
     window.addEventListener('mousemove', move);
 
+    // Helper: get an Element from event target (guards text nodes/SVG)
+    const getElem = (e) => {
+      const path = e.composedPath && e.composedPath();
+      let t = (path && path[0]) || e.target;
+      if (!(t instanceof Element)) t = t?.parentElement || null;
+      return t;
+    };
+
     // ---- Card hover: delayed flip ----
     const onEnterCard = (e) => {
-      if (e.target.closest('.card')) {
+      const el = getElem(e);
+      if (el && el.closest('.card')) {
         isOverCard.current = true;
         hoverTimer.current = setTimeout(() => {
           if (isOverCard.current) flipTop();
         }, 1200);
       }
     };
+
     const onLeaveCard = (e) => {
-      if (e.target.closest('.card')) {
+      const el = getElem(e);
+      if (el && el.closest('.card')) {
         isOverCard.current = false;
         if (hoverTimer.current) {
           clearTimeout(hoverTimer.current);
@@ -47,16 +58,19 @@ export default function Cursor() {
       }
     };
 
-    // ---- Button hover: grow/shrink immediately ----
+    // ---- Button hover: grow/shrink ----
     const BTN_SELECTOR = 'button, .btn, .instructions-btn, .controls button';
     const onEnterBtn = (e) => {
-      if (e.target.closest(BTN_SELECTOR)) {
+      const el = getElem(e);
+      if (el && el.closest(BTN_SELECTOR)) {
         overBtnCount.current += 1;
         grow();
       }
     };
+
     const onLeaveBtn = (e) => {
-      if (e.target.closest(BTN_SELECTOR)) {
+      const el = getElem(e);
+      if (el && el.closest(BTN_SELECTOR)) {
         overBtnCount.current = Math.max(0, overBtnCount.current - 1);
         if (overBtnCount.current === 0) shrink();
       }
@@ -95,7 +109,7 @@ export default function Cursor() {
 
   const grow = () => {
     gsap.to([topRef.current, bottomRef.current], {
-      scale: 2,
+      scale: 1.5,            
       duration: 0.18,
       ease: 'power2.out',
     });
