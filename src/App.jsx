@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import GameBoard from './components/GameBoard';
-import LoadingScreen from './components/LoadingScreen';
-import Timer from './components/Timer';
-import Attempts from './components/Attempts';
-import Rounds from './components/Rounds';
-import Cursor from './components/Cursor';
-import Instructions from './components/Instructions';
-import './App.css';
-
+import React, { useEffect, useState } from "react";
+import GameBoard from "./components/GameBoard";
+import LoadingScreen from "./components/LoadingScreen";
+import Timer from "./components/Timer";
+import Attempts from "./components/Attempts";
+import Rounds from "./components/Rounds";
+import Cursor from "./components/Cursor";
+import Instructions from "./components/Instructions";
+import "./App.css";
+import myImage from './assets/linejapan.png';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -47,12 +47,19 @@ function App() {
         <LoadingScreen />
       ) : (
         <>
-          <div className='wrapper'>
-            <div className='topbar'>
-              <h1>Match/pairs <span className='titlespan'>japan</span></h1>
+          <div className="wrapper">
+            <div className="topbar">
+              <div
+                className="jp-text"
+              >
+                あいうえお カタカナ 漢字
+              </div>
+              <h1>
+                Match/pairs <span className="titlespan">japan</span>
+              </h1>
               <Instructions />
             </div>
-            <div className='midsection'>
+            <div className="midsection">
               <GameBoard
                 onStart={handleStart}
                 onWin={handleGameOver}
@@ -61,11 +68,11 @@ function App() {
                 setAttempts={setAttempts}
               />
             </div>
-            <div className='bottombar'>
-              <div className='box'>
-                <div className='spacer-wrapper'>
-                  <div className='line'></div>
-                  <div className='small-title'>timelapse</div>
+            <div className="bottombar">
+              <div className="box">
+                <div className="spacer-wrapper">
+                  <div className="line"></div>
+                  <div className="small-title">timelapse</div>
                 </div>
                 <Timer
                   isGameActive={isGameActive}
@@ -73,21 +80,28 @@ function App() {
                   resetSignal={resetSignal}
                 />
               </div>
-              <div className='separator'></div>
-              <div className='box right'>
-                <div className='spacer-wrapper'>
-                  <div className='line'></div>
-                  <div className='small-title'>attempts</div>
+              <div className="separator"></div>
+              <div className="box right">
+                <div className="spacer-wrapper">
+                  <div className="line"></div>
+                  <div className="small-title">attempts</div>
                 </div>
                 <Attempts count={attempts} />
               </div>
-              <div className='box right'>
-                <div className='spacer-wrapper'>
-                  <div className='line'></div>
-                  <div className='small-title'>rounds</div>
+              <div className="box right">
+                <div className="spacer-wrapper">
+                  <div className="line"></div>
+                  <div className="small-title">rounds</div>
                 </div>
                 <Rounds count={rounds} />
               </div>
+            </div>
+            <div style={{height: '20px', width: '100%', overflow: 'hidden'}}>
+                  <img 
+                    src={myImage} 
+                    alt="lines" 
+                    style={{ width: '3000px', display: 'block', transform: 'translateX(10px)', flex: '0 0 auto'}} 
+                  />
             </div>
           </div>
         </>
@@ -97,4 +111,3 @@ function App() {
 }
 
 export default App;
-

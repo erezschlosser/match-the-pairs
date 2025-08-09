@@ -5,17 +5,16 @@
   }
   
   .instructions-btn {
-    all: unset;
-    cursor: pointer;
-    padding: 6px 10px;
+    cursor: none;
+    padding: 6px 6px;
     border-radius: 6px;
-    background: #1a1a1a;
-    color: #fff;
-    font-size: 12px;
+    color: #4d4d4d;
+    text-transform: uppercase;
+    font-size: 1rem;
     letter-spacing: .04em;
   }
   
-  .instructions-btn:hover { background: #2a2a2a; }
+  .instructions-btn:hover { text-decoration: underline; }
   
   .instructions-panel {
     overflow: hidden;   /* enables height animation */
@@ -24,10 +23,10 @@
     display: none;
     margin-top: 10px;
     border-radius: 8px;
-    background: #ffffff;
-    color: #111;
+    background: transparent;
+    color: #4d4d4d;
     max-width: 520px;
-    box-shadow: 0 8px 18px rgba(0,0,0,.08);
+    /*box-shadow: 0 8px 18px rgba(0,0,0,.08);*/
   }
   
   .instructions-content {

@@ -49,13 +49,16 @@
 .primary {
   font-size: clamp(48px, 8vw, 96px);
   line-height: 1;
-  color: #111;
+  color: #4d4d4d;
+  font-weight: 600;
 }
 
 .secondary {
   margin-top: 6px;
   font-size: 14px;
   opacity: 0.7;
+  font-weight: 600;
+  color: #FF3300;
 }
 
 .card-front {

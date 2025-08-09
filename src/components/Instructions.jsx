@@ -1,5 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import './Instructions.css';
 
 const TEXT = `Match pairs of Hiragana with their Romaji. Click two cards to flip them. 
 If they match, they stay revealed. Try to finish with as few attempts as possible.`
